@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Viewer from './Viewer'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface Props {
+    urn?: string;
 }
+
+const App: React.FC<Props> = ({
+}) => {
+
+    const [urn, setUrn] = React.useState<string>();
+
+    const onLoadClick = () => {
+        setUrn('dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6ZGEtdGVzdF92Mmd4dnBmZG1jajhham04eXp0YThhcWJvbWhmYWduNi9BcmNoaXRlY3R1cmFsXzIwMjAucnZ0');
+        console.debug(`onLoadClick`);
+    }
+
+    const onDocumentLoaded = () => {
+        console.debug(`onDocumentLoaded`);
+    }
+
+    const onViewerInitialized = () => {
+        console.debug(`onViewerInitialized`);
+    }
+
+    return (
+        <div className="App">
+            <button onClick={onLoadClick}>Load</button>
+            <Viewer urn={urn}
+                onDocumentLoaded={onDocumentLoaded}
+                onViewerInitialized={onViewerInitialized}/>
+        </div>
+    );
+};
 
 export default App;
