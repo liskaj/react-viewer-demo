@@ -33,7 +33,7 @@ class Viewer extends Component<Props, State> {
 
     componentDidUpdate(prevProps: Props, prevState: State) {
         console.debug(`Viewer#componentDidUpdate`);
-        if (this.props.urn != prevProps.urn) {
+        if (this.props.urn !== prevProps.urn) {
             this.load(this.props.urn);
         }
     }
@@ -44,7 +44,7 @@ class Viewer extends Component<Props, State> {
 
     render() {
         return (
-            <div ref={this.viewerRef} className="Viewer">
+            <div ref={this.viewerRef} className="viewer">
             </div>
         );
     }
