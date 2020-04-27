@@ -40,6 +40,16 @@ class Viewer extends Component<Props, State> {
 
     componentWillUnmount() {
         console.debug(`Viewer#componentWillUnmount`);
+        if (this._viewer && this._viewer.impl.selector) {
+            this._viewer.removeEventListener(Autodesk.Viewing.VIEWER_INITIALIZED, (e) => {
+                this.onViewerInitialized(e);
+            });
+            this._viewer.removeEventListener(Autodesk.Viewing.VIEWER_UNINITIALIZED, (e) => {
+                this.onViewerUninitialized(e);
+            });
+            this._viewer.tearDown();
+            this._viewer = null;
+        }
     }
 
     render() {
