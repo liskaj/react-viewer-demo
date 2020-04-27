@@ -1,19 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './SideBar.css';
+import AppContext from './AppContext';
 
-interface Props {
-    onLoad?: () => void;
-}
-
-const SideBar: React.FC<Props> = ({
-    onLoad = null
-}) => {
+const SideBar: React.FC = () => {
+    const { setUrn } = useContext(AppContext);
 
     const onLoadClick = () => {
         console.debug(`onLoadClick`);
-        if (onLoad) {
-            onLoad();
-        }
+        setUrn('dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6ZGEtdGVzdF92Mmd4dnBmZG1jajhham04eXp0YThhcWJvbWhmYWduNi9BcmNoaXRlY3R1cmFsXzIwMjAucnZ0');
     }
 
     return (
