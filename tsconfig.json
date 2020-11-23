@@ -22,7 +22,8 @@
       "types/forge-viewer",
       "types/three",
       "node_modules/@types"
-    ]
+    ],
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
     "src"
